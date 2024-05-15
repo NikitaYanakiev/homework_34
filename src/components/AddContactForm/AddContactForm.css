@@ -1,0 +1,17 @@
+.form {
+    padding: 20px;
+}
+
+.form__buttons {
+    text-align: center;
+}
+
+.form__add-button {
+    flex: 0 0 200px;
+    font-size: 20px;
+
+}
+.form__cancel-button {
+    flex: 0 0 200px;
+    font-size: 20px;
+}

@@ -1,0 +1,35 @@
+.header {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+
+.fa-arrow-left {
+    cursor: pointer;
+    font-size: 35px;
+    transition: all .4s;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%)
+    
+}
+
+.fa-arrow-left:hover {
+    opacity: 0.5;
+}
+
+.fa-user-plus {
+    cursor: pointer;
+    font-size: 30px;
+    transition: all .4s;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.fa-user-plus:hover {
+    opacity: 0.5;
+} 

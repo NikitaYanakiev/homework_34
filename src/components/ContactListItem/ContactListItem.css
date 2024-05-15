@@ -1,0 +1,100 @@
+.list-group-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #3d5a80;
+    text-align: left;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.contact__name {
+    flex: 0 0 250px;
+}
+
+.list-group-item span {
+    line-height: 35px;
+    font-size: 20px;
+}
+
+.contact__item {
+    line-height: 35px;
+    font-size: 18px;
+    border-right: 1px solid #dee2e6;
+}
+
+.btn-sm {
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-trash {
+    color: #e5383b;
+    transition: all .3s;
+}
+
+.btn-trash:hover {
+    color: #a81416;
+}
+
+.btn-edit {
+    color: #e09f3e;
+    transition: all .3s;
+}
+
+.btn-edit:hover {
+    color: #a06b1c;
+}
+
+.modal-overlay {
+    display: none;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-delete {
+    text-align: center;
+    border-radius:16px;
+    width: 300px;
+    position: relative; 
+    background-color: #fff;
+    padding: 20px;
+}
+
+.modal-text {
+    font-size: 24px;
+}
+
+.fa-circle-xmark {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 26px;
+    color: rgb(220, 53, 69);
+}
+
+.btn-delete {
+    width: 40%;
+    margin-right: 10px;
+}
+
+.btn-cancel {
+    width: 40% ;
+}
+
