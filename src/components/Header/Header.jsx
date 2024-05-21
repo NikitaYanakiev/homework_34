@@ -5,7 +5,7 @@ function Header({handleGoBack}) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const isContactListPage = location.pathname === '/homework_34' || location.pathname === '/';
+    const isContactListPage = location.pathname === '/homework_34' || location.pathname === '/homework_34/';
     const isAddPage = location.pathname === '/add';
 
     function goBack() {
