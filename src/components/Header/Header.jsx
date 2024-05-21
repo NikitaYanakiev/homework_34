@@ -5,9 +5,8 @@ function Header({handleGoBack}) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const isContactListPage = location.pathname === '/homework_34';
+    const isContactListPage = location.pathname === '/homework_34' || location.pathname === '/';
     const isAddPage = location.pathname === '/add';
-
 
     function goBack() {
         navigate('/homework_34');
