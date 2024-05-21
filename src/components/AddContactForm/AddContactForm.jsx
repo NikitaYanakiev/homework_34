@@ -1,28 +1,26 @@
 import { useState, useEffect } from 'react';
-
+import { useNavigate } from "react-router-dom";
 import './AddContactForm.css';
 
-function AddContactForm({ selectedContact, onAdd }) {
+function AddContactForm({ selectedContact, onAdd, onCancel }) {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [phone, setPhone] = useState('');
     const [nameValid, setNameValid] = useState(true);
     const [surnameValid, setSurnameValid] = useState(true);
     const [phoneValid, setPhoneValid] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (selectedContact) {
             setName(selectedContact.name);
-            setSurname(selectedContact.surname);
+            setSurname(selectedContact.surname); 
             setPhone(selectedContact.phone);
         } else {
             setName('');
             setSurname('');
             setPhone('');
         }
-        setNameValid(true);
-        setSurnameValid(true);
-        setPhoneValid(true);
     }, [selectedContact]);
 
     function handleNameChange(e) {
@@ -78,65 +76,71 @@ function AddContactForm({ selectedContact, onAdd }) {
         setName('');
         setSurname('');
         setPhone('');
-        setNameValid(true);
-        setSurnameValid(true);
-        setPhoneValid(true);
-        onAdd();
+        onAdd(contact);
+        navigate('/homework_34');
     }
 
     return (
-        <form className="form  needs-validation">
+        <form className="form needs-validation">
             <div className="row mb-3">
                 <div className="col">
-                    <label 
-                        htmlFor="form__name" 
-                        className="form-label">Name</label>
+                    <label htmlFor="form__name" className="form-label">Name</label>
                     <input 
                         value={name} 
                         onChange={handleNameChange} 
                         type="text" 
-                        className={`form-control ${nameValid ? '' : 'is-invalid'}`} required />
+                        className={`form-control ${nameValid ? '' : 'is-invalid'}`} 
+                        required 
+                    />
                     <div className="invalid-feedback">
                         Please enter a name
                     </div>
                 </div>
                 <div className="col">
-                    <label 
-                        htmlFor="form__surname" 
-                        className="form-label">Surname</label>
+                    <label htmlFor="form__surname" className="form-label">Surname</label>
                     <input 
                         value={surname} 
                         onChange={handleSurnameChange} 
                         type="text" 
-                        className={`form-control ${surnameValid ? '' : 'is-invalid'}`} required />
+                        className={`form-control ${surnameValid ? '' : 'is-invalid'}`} 
+                        required 
+                    />
                     <div className="invalid-feedback">
                         Please enter a surname
                     </div>
                 </div>
             </div>
             <div className="mb-3">
-                <label 
-                    htmlFor="form__phone" 
-                    className="form-label">Phone number</label>
+                <label htmlFor="form__phone" className="form-label">Phone number</label>
                 <input 
                     value={phone} 
                     onChange={handlePhoneChange} 
                     type="text" 
-                    className={`form-control ${phoneValid ? '' : 'is-invalid'}`} required />
+                    className={`form-control ${phoneValid ? '' : 'is-invalid'}`} 
+                    required 
+                />
                 <div className="invalid-feedback">
                     Please enter phone number
                 </div>
             </div>
-
             <div className="form__buttons d-flex justify-content-evenly">
                 <button
                     type='button'
                     className="form__add-button button__contact btn btn-success"
-                    onClick={addContact}>Save</button>
+                    onClick={addContact}
+                >
+                    Save
+                </button>
                 <button
                     type='button'
                     className="form__cancel-button button__add btn btn-danger"
-                    onClick={onAdd}>Cancel</button>
+                    onClick={() => {
+                        onCancel();
+                        navigate('/homework_34');
+                    }}
+                >
+                    Cancel
+                </button>
             </div>
         </form>
     );

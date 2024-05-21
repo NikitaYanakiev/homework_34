@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import ContactListItem from '../ContactListItem/ContactListItem';
 
 import './ContactList.css';
 
-function ContactList({ onEdit }) {
-    const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('contacts')) || []);
+function ContactList({ onEdit, contacts, setContacts }) {
+    contacts = JSON.parse(localStorage.getItem('contacts')) || [];
 
     function deleteContact(id) {
         const updatedContacts = contacts.filter(contact => contact.id !== id);

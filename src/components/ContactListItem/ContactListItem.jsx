@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './ContactListItem.css';
 
-function ContactListItem({ name, surname, phone, id, onDelete , onEdit }) {
+function ContactListItem({ name, surname, phone, id, onDelete, onEdit }) {
     const [modalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     phone = phone.replace(/\s\w{1,}$/, '');
     phone = phone.replace(/\./g, '-');
@@ -22,6 +24,7 @@ function ContactListItem({ name, surname, phone, id, onDelete , onEdit }) {
 
     function handleEdit() {
         onEdit({ id, name, surname, phone });
+        navigate('/add');
     }
 
     return (
@@ -33,7 +36,7 @@ function ContactListItem({ name, surname, phone, id, onDelete , onEdit }) {
                 <div className='d-flex justify-content-center align-items-center'>
                     <button 
                         type="button" 
-                        className="btn-edit btn-sm " 
+                        className="btn-edit btn-sm" 
                         onClick={handleEdit}>
                         <i className="fa-solid fa-pen"></i>
                     </button>
@@ -48,17 +51,17 @@ function ContactListItem({ name, surname, phone, id, onDelete , onEdit }) {
                 {modalOpen && (
                     <div className={`modal-overlay ${modalOpen ? 'show' : ''}`}>
                         <div className="modal-delete">
-                            <p className='modal-text'>Delete ?</p>
+                            <p className='modal-text'>Удалить?</p>
                             <i className="fa-solid fa-circle-xmark" onClick={cancelDelete}></i>
                             <div className="modal-btns">
                                 <button 
                                     type="button" 
                                     className="btn-delete btn btn-danger" 
-                                    onClick={confirmDelete}>Delete</button>
+                                    onClick={confirmDelete}>Удалить</button>
                                 <button 
                                     type="button" 
                                     className="btn-cancel btn btn-secondary" 
-                                    onClick={cancelDelete}>Cancel</button>
+                                    onClick={cancelDelete}>Отмена</button>
                             </div>
                         </div>
                     </div>

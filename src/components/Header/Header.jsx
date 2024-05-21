@@ -1,21 +1,27 @@
-import './Header.css'
+import { useNavigate, useLocation } from "react-router-dom";
+import './Header.css';
 
-function Header({currentPage, goBack, goToAddContacts, isEditing  }) {
-    let title = '';
-    if (currentPage === 'contacts') {
-        title = 'Contact List'
-    } else if ((currentPage === 'addContacts')) {
-        title = isEditing ? 'Edit Contact' : 'Add Contacts';
+function Header({handleGoBack}) {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const isContactListPage = location.pathname === '/homework_34';
+    const isAddPage = location.pathname === '/add';
+
+
+    function goBack() {
+        navigate('/homework_34');
+        handleGoBack();
     }
-    
+
     return (
         <header className="header text-bg-primary">
-            <h1 className="header__title display-6">{title}</h1>
-            {currentPage === 'addContacts' && (
-                <i className="fa-solid fa-arrow-left" onClick={goBack}></i>
+            <h1 className="header__title display-6">{isAddPage ? 'Add Contact' : 'Contacts'}</h1>
+            {isContactListPage && (
+                <i className="fa-solid fa-user-plus" onClick={() => navigate('/add')}></i>
             )}
-            {currentPage === 'contacts' && (
-                <i className="fa-solid fa-user-plus" onClick={goToAddContacts}></i>
+            {isAddPage && (
+                <i className="fa-solid fa-arrow-left" onClick={goBack}></i>
             )}
         </header>
     );
